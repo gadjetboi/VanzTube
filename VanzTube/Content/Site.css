@@ -1,0 +1,47 @@
+﻿@media screen and (max-width: 736px) {
+    .column {
+        width: 414px;
+    }
+
+    .single_cat_horizontal_container .single_cat {
+        width: 414px;
+    }
+
+    .menu .nav {
+        width: 150px;
+    }
+
+    .column {
+        padding-top: 5px;
+    }
+
+    .header {
+        margin-top: 5px;
+    }
+
+    .search {
+        width: 255px;
+    }
+
+    .feature_right_add {
+        width: 100%;
+    }
+
+    .feature_right_add h2 {
+        margin-left: 0px;
+
+    }
+
+    .single_cat_meta p {
+        font-size: 10px;
+    }
+
+    .single_cat_rating span {
+        font-size: 10px;
+    }
+
+    .single_cat_meta > a {
+        font-size: 13px;
+    }
+   
+}

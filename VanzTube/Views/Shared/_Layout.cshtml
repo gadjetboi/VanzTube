@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>VANZTUBE</title>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" media="screen">
+
+        <!-- bx slider-->
+        <link rel="stylesheet" href="~/Content/css/jquery.bxslider.css">
+        <!-- Fonts-->
+        <link rel="stylesheet" href="~/Content/fonts/Bebas/font.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="~/Content/css/font-awesome.min.css">
+        <link href="~/Content/style.css" rel="stylesheet" media="screen">
+        <link href="~/Content/responsive.css" rel="stylesheet" media="screen">
+        
+
+        <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    	<link href="@Url.Content("~/Content/kendo/2016.2.504/kendo.common.min.css")" rel="stylesheet" type="text/css" />
+	    <link href="@Url.Content("~/Content/kendo/2016.2.504/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
+	    <link href="@Url.Content("~/Content/kendo/2016.2.504/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+	    <link href="@Url.Content("~/Content/kendo/2016.2.504/kendo.default.min.css")" rel="stylesheet" type="text/css" />
+	    <link href="@Url.Content("~/Content/kendo/2016.2.504/kendo.dataviz.metro.min.css")" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="fix column">
+        <div class="fix header">
+            <div class="fix logo floatleft">
+                <a href="/"><h1>VanzTube</h1></a>
+            </div>
+            <div class="fix searchform floatright">
+                <form action="~/Search">
+                    <p>
+                        <input type="text" placeholder="Search videos" name="search" class="search" />
+                        <input type="submit" value="search" class="submit" />
+                    </p>
+                </form>
+            </div>
+        </div>
+
+        <div class="menu">
+            @{ Html.RenderAction("Navigation", "Page"); }
+        </div>
+      
+        @RenderBody();
+
+        <div class="fix footer_area">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="~/Page/Contact">Contact us</a></li>
+            </ul>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

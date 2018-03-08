@@ -1,0 +1,37 @@
+﻿@using VanzTube.Models.ViewModels;
+@model IEnumerable<VideoViewModel>
+
+
+         
+            <div class="fix home_addbar">
+                <h2>Most Hot Videos</h2>
+                <div class="fix feature_video_container">
+
+                    @foreach (var latestUpdatedViewModel in Model)
+    {
+                <a href="~/Page/Video/?id=@(latestUpdatedViewModel.VideoId)">
+                    <div class="fix single_addbar">
+                       <img src="@(latestUpdatedViewModel.Image)" alt="" />
+                        <div class="fix single_cat_meta">
+                            <a>@(latestUpdatedViewModel.Title)</a>
+                            <div class="fix">
+                                <p class="floatleft">3 days ago</p>
+                                <p class="floatright">7854 views</p>
+                            </div>
+                        </div>
+                        <div class="fix single_cat_rating">
+                            <span>Ratings</span>
+                            <div class="single_cat_star">
+                                <a href=""></a>
+                                <a href=""></a>
+                                <a href=""></a>
+                                <a href=""></a>
+                                <a href=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+}
+                </div>
+            </div>
+

@@ -1,0 +1,21 @@
+﻿@using VanzTube.Models.ViewModels;
+@model IEnumerable<VideoCategoryViewModel>
+
+<div class="fix home_addbar">
+    <h2>Categories</h2>
+    <div class="fix single_addbar_container">
+
+    @foreach (var videoViewModel in Model)
+    {
+        <a href="/Category/?categoryId=@(videoViewModel.VideoCategoryId)">
+            <div class="fix single_addbar">
+                <div class="fix single_cat_meta">
+                    <h5>@(videoViewModel.Name)</h5>
+
+                </div>
+                <img src="@(videoViewModel.Image)" alt="" />
+            </div>
+        </a>
+    }
+    </div>
+</div>

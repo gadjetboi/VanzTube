@@ -1,0 +1,12 @@
+﻿@using VanzTube.Models.ViewModels;
+@model IEnumerable<VideoViewModel>
+
+<div class="fix feature_right_add floatright">
+    <h2>Members Videos</h2>
+    @foreach (var memberVideo in Model)
+    {
+        <a href="~/Page/Video/?id=@(memberVideo.VideoId)">
+            <div class="fix single_feature_right_add"><img src="@(memberVideo.Image)" alt="" /></div>
+        </a>
+    }
+</div>

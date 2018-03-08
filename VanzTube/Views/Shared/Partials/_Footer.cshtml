@@ -1,0 +1,12 @@
+﻿@using VanzTube.Models.ViewModels;
+@model IEnumerable<VideoCategoryViewModel>
+
+@{Html.RenderAction("HotVideo", "Page"); }
+
+<div class="fix category">
+    <h2>Categories</h2>
+    @foreach (var videoCategoryViewModel in Model)
+    {
+        <a href="/Category/?categoryId=@(videoCategoryViewModel.VideoCategoryId)">@(videoCategoryViewModel.Name)</a>
+    }
+</div>

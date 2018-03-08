@@ -1,0 +1,15 @@
+﻿@using VanzTube.Models.ViewModels;
+@model IEnumerable<VideoViewModel>
+
+<div class="fix home_addbar">
+    <h2>Most Hot Videos</h2>
+    <div class="fix feature_video_container">
+
+        @foreach (var hotVideo in Model)
+    {
+        <a href="~/Page/Video/?id=@(hotVideo.VideoId)">
+            <div class="fix single_addbar"><img src="@(hotVideo.Image)" alt="" /></div>
+        </a>
+    }
+    </div>
+</div>

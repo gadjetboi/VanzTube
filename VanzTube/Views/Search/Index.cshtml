@@ -1,0 +1,54 @@
+﻿@using VanzTube.Models.ViewModels;
+@model IEnumerable<VideoViewModel>
+
+<div class="fix blog_feature_area">
+    <div class="fix blog_feature">
+        <div class="fix feature_videos floatleft">
+            <h2>Search Results [ @Model.Count() ]</h2>
+            <div class="fix feature_video_container">
+                @if (Model.Count() <= 0)
+                {
+                    <div>
+                        <h5>
+                           &nbsp; No Video(s) Found
+                        </h5>
+                    </div>
+                }
+                else
+                {
+                    foreach (var videoViewModel in Model)
+                    {
+                        <a href="~/Page/Video/?id=@(videoViewModel.VideoId)">
+                            <div class="fix single_cat">
+                                <div class="play-small"></div>
+                                <img src="@(videoViewModel.Image)" alt="" />
+                                <div class="fix single_cat_meta">
+                                    <a>@(videoViewModel.Title)</a>
+                                    <div class="fix">
+                                        <p class="floatleft">3 days ago</p>
+                                        <p class="floatright">7854 views</p>
+                                    </div>
+                                </div>
+                                <div class="fix single_cat_rating">
+                                    <span>Ratings</span>
+                                    <div class="single_cat_star">
+                                        <a href=""></a>
+                                        <a href=""></a>
+                                        <a href=""></a>
+                                        <a href=""></a>
+                                        <a href=""></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                }
+            </div>
+        </div>
+        @{Html.RenderAction("MembersVideo", "Page"); }
+    </div>
+</div>
+
+@{Html.RenderAction("LatestUpdatedVideo", "Search"); }
+
+@{Html.RenderAction("Footer", "Search"); }

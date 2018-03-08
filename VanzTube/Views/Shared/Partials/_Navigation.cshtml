@@ -1,0 +1,40 @@
+﻿@using VanzTube.Models.ViewModels;
+@model BundleViewModel
+
+@using Microsoft.AspNet.Identity
+<ul class="nav">
+    @foreach (var pageViewModel in Model.PageViewModels)
+    {
+        <li><a href="/?page=@(pageViewModel.PageId)">@(pageViewModel.Title)</a></li>
+    }
+
+    <li>
+        <a href="/Page/Contact">Contact Us</a>
+    </li>
+    <li>
+        <a href="/Category/All">Categories</a>
+        <ul>
+            @foreach (var videoCategoryViewModel in Model.VideoCategoryViewModels)
+            {
+                <li><a href="/Category/?categoryId=@(videoCategoryViewModel.VideoCategoryId)">@(videoCategoryViewModel.Name)</a></li>
+            }
+        </ul>
+    </li>
+
+    @if (Request.IsAuthenticated)
+    {
+        <li class="pull-right"><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        <li class="pull-right">@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+    }
+    else
+    {
+        <li class="pull-right"><a href="~/Account/Login">Login</a></li>
+        <li class="pull-right"><a href="~/Account/Register">Register</a></li>
+    }
+</ul>
+
+
+@using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+{
+    @Html.AntiForgeryToken()
+}

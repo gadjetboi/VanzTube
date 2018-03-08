@@ -1,0 +1,37 @@
+﻿@using VanzTube.Models.ViewModels;
+@model VideoViewModel
+
+@{
+    ViewBag.Title = "Video";
+}
+
+<div class="fix blog_feature_area">
+    <div class="fix blog_feature">
+        <div class="fix feature_videos floatleft">
+            <div class="fix title">
+                <h3>@(Model.Title)</h3>
+                <div class="fix video_rating">
+                    <p>Rate this video</p>
+                    <div class="fix">
+                        <a href=""></a>
+                        <a href=""></a>
+                        <a href=""></a>
+                        <a href=""></a>
+                        <a href=""></a>
+                    </div>
+                </div>
+
+            </div>
+          
+            <iframe width="610" height="490" src="@(Model.URL)" frameborder="0" allowfullscreen></iframe>
+
+            <div class="fix player_bottom_add"></div>
+        </div>
+        @{Html.RenderAction("MembersVideo", "Page"); }
+    </div>
+</div>
+
+@{Html.RenderAction("LatestUpdatedVideo", "Search"); }
+
+@{Html.RenderAction("Footer", "Search"); }
+

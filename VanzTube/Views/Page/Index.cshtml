@@ -1,0 +1,59 @@
+﻿@using VanzTube.Models.ViewModels;
+@model BundleViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<!-- Page Content -->
+@if (ViewBag.IsDisplayContent)
+{
+    <div class="page-content-wrapper">
+        <div class="well well-sm">
+            <p>@(Html.Raw(@Model.PageViewModel.Content))</p>
+        </div>
+    </div>
+}
+
+<div class="fix blog_feature_area">
+    <div class="fix blog_feature">
+        <div class="fix feature_videos floatleft">
+            <h2>Featured Videos</h2>
+            <div class="fix feature_video_container">
+                @foreach (var featuredViewModel in Model.FeaturedViewModels)
+                {
+                    <a href="~/Page/Video/?id=@(featuredViewModel.VideoId)">
+                        <div class="fix single_cat">
+                            <div class="play-small"></div>
+                            <img src="@(featuredViewModel.Image)" alt="" />
+                            <div class="fix single_cat_meta">
+                                <a>@(featuredViewModel.Title)</a>
+                                <div class="fix">
+                                    <p class="floatleft">3 days ago</p>
+                                    <p class="floatright">7854 views</p>
+                                </div>
+                            </div>
+                            <div class="fix single_cat_rating">
+                                <span>Ratings</span>
+                                <div class="single_cat_star">
+                                    <a href=""></a>
+                                    <a href=""></a>
+                                    <a href=""></a>
+                                    <a href=""></a>
+                                    <a href=""></a>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                }
+
+            </div>
+        </div>
+        @{Html.RenderAction("MembersVideo", "Page"); }
+    </div>
+</div>
+
+
+@{ Html.RenderPartial("~/Views/Shared/Partials/_LatestUpdated.cshtml", Model.LatestUpdatedViewModels); }
+
+
+@{ Html.RenderPartial("~/Views/Shared/Partials/_Footer.cshtml", Model.VideoCategoryViewModels); }
