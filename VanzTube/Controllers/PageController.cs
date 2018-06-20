@@ -1,11 +1,10 @@
 ﻿using System.Web.Mvc;
-using VanzTube.Models;
 using VanzTube.Models.ViewModels;
 using VanzTube.DataRepository;
 using VanzTube.Interfaces;
 using VanzTube_v3.Infrastructure;
-using System;
 using VanzTube_v3.Controllers;
+using System.Configuration;
 
 namespace VanzTube.Controllers
 {
@@ -22,6 +21,7 @@ namespace VanzTube.Controllers
 
         [LogFilter]
         [ErrorFilter]
+        [OutputCache(CacheProfile = "CacheProfileOneHour", VaryByParam = "page")]
         public ActionResult Index(int? page = null)
         {
             //throw new NullReferenceException();
@@ -52,6 +52,7 @@ namespace VanzTube.Controllers
 
         [ChildActionOnly]
         [LogFilter]
+        [OutputCache(Duration = 3600, VaryByParam = "none")]
         public ActionResult Navigation()
         {
             var menuViewModel = new BundleViewModel()
@@ -63,6 +64,7 @@ namespace VanzTube.Controllers
             return PartialView("Partials/_Navigation", menuViewModel);
         }
 
+        [OutputCache(CacheProfile = "CacheProfileOneHour", VaryByParam = "id")]
         public ActionResult Video(int id)
         {
             var viewVideoModel = _videoRepository.GetVideo(id);
@@ -77,6 +79,8 @@ namespace VanzTube.Controllers
             }
         }
 
+        [ChildActionOnly]
+        [OutputCache(Duration = 3600, VaryByParam = "none")]
         public ActionResult HotVideo()
         {
             var hotVideoModels = _videoRepository.GetHotVideos();
@@ -84,6 +88,8 @@ namespace VanzTube.Controllers
             return PartialView("~/Views/Shared/Partials/_HotVideo.cshtml", hotVideoModels);
         }
 
+        [ChildActionOnly]
+        [OutputCache(Duration = 3600, VaryByParam = "none")]
         public ActionResult MembersVideo()
         {
             var membersVideo = _videoRepository.GetVideoForMembers();
@@ -92,6 +98,7 @@ namespace VanzTube.Controllers
         }
 
         [AllowAnonymous]
+        [OutputCache(CacheProfile = "CacheProfileOneHour", VaryByParam = "none")]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
@@ -102,6 +109,7 @@ namespace VanzTube.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
+        [OutputCache(CacheProfile = "CacheProfileOneHour", VaryByParam = "none")]
         public ActionResult Contact(ContactViewModel model)
         {
             if (ModelState.IsValid)

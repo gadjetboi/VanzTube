@@ -13,6 +13,7 @@ namespace VanzTube.Controllers
             _videoRepository = new VideoRepository();
         }
 
+        [OutputCache(CacheProfile = "CacheProfileOneHour", VaryByParam = "search")]
         public ActionResult Index(string search)
         {
             var searchResults = _videoRepository.Search(search);
