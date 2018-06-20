@@ -201,12 +201,15 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\BasePageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\ErrorFilterAttribute.cs" />
+    <Compile Include="Infrastructure\LogAttribute.cs" />
     <Compile Include="Interfaces\IPageRepository.cs" />
     <Compile Include="Interfaces\IVideoRepository.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -288,6 +291,12 @@
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
     <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\readme\category.PNG" />
+    <Content Include="Images\readme\contact.PNG" />
+    <Content Include="Images\readme\home.PNG" />
+    <Content Include="Images\readme\login.PNG" />
+    <Content Include="Images\readme\register.PNG" />
+    <Content Include="Images\readme\search.PNG" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />

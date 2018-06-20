@@ -3,10 +3,13 @@ using VanzTube.Models;
 using VanzTube.Models.ViewModels;
 using VanzTube.DataRepository;
 using VanzTube.Interfaces;
+using VanzTube_v3.Infrastructure;
+using System;
+using VanzTube_v3.Controllers;
 
 namespace VanzTube.Controllers
 {
-    public class PageController : Controller
+    public class PageController : BasePageController
     {
         IPageRepository _pageRepository;
         IVideoRepository _videoRepository;
@@ -17,8 +20,12 @@ namespace VanzTube.Controllers
             _videoRepository = new VideoRepository();
         }
 
+        [LogFilter]
+        [ErrorFilter]
         public ActionResult Index(int? page = null)
         {
+            //throw new NullReferenceException();
+
             ViewBag.IsSuccess = false; 
             
             ViewBag.IsDisplayContent = false;
@@ -44,6 +51,7 @@ namespace VanzTube.Controllers
         }
 
         [ChildActionOnly]
+        [LogFilter]
         public ActionResult Navigation()
         {
             var menuViewModel = new BundleViewModel()
